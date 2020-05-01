@@ -25,4 +25,9 @@ const getQuestions = (num = 1) => {
   return window.fetch(url).then((r) => r.json());
 };
 
-export { getQuestions };
+const getQuestionDetail = (questionId) => {
+  const url = `${API_ROOT}/questions/${questionId}`;
+  return window.fetch(url).then((r) => r.json());
+};
+
+export { getQuestions, getQuestionDetail };

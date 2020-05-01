@@ -5,13 +5,22 @@ const Wrapper = styled.div`
   padding: 10px;
 `;
 
-const QuestionHeader = styled.h2``;
+const QuestionHeader = styled.h2`
+  margin-bottom: 30px;
+`;
 const Choices = styled.form`
   display: flex;
   flex-flow: column nowrap;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
 `;
 const ChoiceRow = styled.div`
-  width: 100%;
+  display: flex;
+  border-top: 1px solid black;
+  padding: 10px;
+  &:last-child {
+    border-bottom: 1px solid black;
+  }
 `;
 
 const Option = styled.div`
@@ -19,7 +28,7 @@ const Option = styled.div`
 `;
 
 const Vote = styled.div`
-  width: 25%;
+  width: 50%;
 `;
 
 const QuestionDetail = ({ question, choices }) => {
@@ -27,12 +36,13 @@ const QuestionDetail = ({ question, choices }) => {
     <Wrapper>
       <QuestionHeader>Question: {question} </QuestionHeader>
       <Choices>
-        {choices.map((choice) => (
-          <ChoiceRow>
-            <Option>{choice.choice}</Option>
-            <Vote>{choice.votes}</Vote>
-          </ChoiceRow>
-        ))}
+        {choices &&
+          choices.map((choice) => (
+            <ChoiceRow key={choice.choice}>
+              <Option>{choice.choice}</Option>
+              <Vote>{choice.votes}</Vote>
+            </ChoiceRow>
+          ))}
       </Choices>
     </Wrapper>
   );
