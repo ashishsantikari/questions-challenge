@@ -16,12 +16,10 @@ class QueryParams {
 
 const API_ROOT = "https://polls.apiblueprint.org";
 
-const GET_QUESTIONS = `${API_ROOT}/questions`;
-
 const getQuestions = (num = 1) => {
   const queryParams = new QueryParams();
   queryParams.addParam("page", num);
-  const url = `${GET_QUESTIONS}${queryParams.toString()}`;
+  const url = `${API_ROOT}/questions${queryParams.toString()}`;
   return window.fetch(url).then((r) => r.json());
 };
 
