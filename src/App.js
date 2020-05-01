@@ -1,13 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <Router>
       <Switch>
         <Route exact path="/">
-          <h1>Home Page</h1>
+          <Home />
         </Route>
         <Route path={`/detail/:questionId`}>
           <h1>Detail page</h1>
