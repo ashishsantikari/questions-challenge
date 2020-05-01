@@ -13,13 +13,15 @@ const Wrapper = styled.div`
   border: 1px solid gray;
   padding: 10px;
   margin: 10px;
+  cursor: pointer;
 `;
 
-const Question = ({ question, publishedAt, choices }) => {
+const Question = ({ question, id, publishedAt, choices, onClick }) => {
   const len = choices.length;
   const noOfChoiceStr = `${len} Choice(s)`;
+
   return (
-    <Wrapper>
+    <Wrapper onClick={() => onClick(id)}>
       <QuestionHeader>{question}</QuestionHeader>
       <Published>{publishedAt}</Published>
       <Choices>{noOfChoiceStr}</Choices>
@@ -30,6 +32,7 @@ const Question = ({ question, publishedAt, choices }) => {
 Question.propTypes = {
   question: PropTypes.string.isRequired,
   publishedAt: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   choices: PropTypes.arrayOf(
     PropTypes.shape({
       choice: PropTypes.string.isRequired,
@@ -37,6 +40,7 @@ Question.propTypes = {
       votes: PropTypes.number.isRequired,
     })
   ),
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Question;
